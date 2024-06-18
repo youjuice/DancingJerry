@@ -78,3 +78,7 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
+
+#section_8 > div {
+  margin-top: 700px;
+}
