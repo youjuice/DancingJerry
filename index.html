@@ -5,6 +5,7 @@
     <title>My first three.js app</title>
     <link rel="stylesheet" href="./style.css">
     <script type="module" src="./main.js"></script>
+    <script src="./script.js"></script>
 </head>
 <body>
   <div class="ThreeScene">
@@ -49,11 +50,19 @@
         <div>
           <h2>Jerry에게 노래 추천하기</h2>
           <p>
-            <button id="openModalBtn">추천 하기</button>
+            <button id="openModalBtn" onclick="openModal()">추천 하기</button>
           </p>
         </div>
       </section>
     </main>
+  </div>
+
+  <div id="recommendationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>노래 추천</h2>
+      <div id="songList"></div>
+    </div>
   </div>
 </body>
 </html>
