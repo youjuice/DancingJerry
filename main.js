@@ -35,6 +35,7 @@ function setup() {
 
     animate();
     window.addEventListener('resize', windowResize);
+    window.addEventListener('load', windowResize);
     window.addEventListener('scroll', handleScroll, { passive: false });
 }
 
@@ -122,6 +123,22 @@ function windowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    updateSectionHeights();
+}
+
+function updateSectionHeights() {
+    const sections = document.querySelectorAll('main section');
+    const numSections = sections.length;
+    const sectionHeight = window.innerHeight;
+
+    sections.forEach(section => {
+        section.style.height = sectionHeight + 'px';
+    });
+
+    // main 요소의 총 높이를 섹션 개수 * 화면 높이로 설정
+    const main = document.querySelector('main');
+    main.style.height = sectionHeight * numSections + 'px';
 }
 
 setup();
