@@ -52,6 +52,7 @@
           <h2>Jerry에게 노래 추천하기</h2>
           <p>
             <button id="openModalBtn" onclick="openModal()">추천 하기</button>
+            <button id="showRecommendationsBtn" onclick="showRecommendations()">추천 목록 보기</button>
           </p>
         </div>
       </section>
@@ -62,7 +63,7 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
       <h2>Get Song Recommendations</h2>
-      <form id="recommendationForm" onsubmit="return showYouTubeVideo()">
+      <form id="recommendationForm">
         <label for="genre">Genre :</label>
         <select id="genre" name="genre">
           <option value="Pop">Pop</option>
@@ -80,8 +81,8 @@
         <input type="text" id="youtubeLink" name="youtubeLink" style="width: 100%; max-width: 350px;" placeholder="https://youtu.be/"><br><br>
         <input type="submit" value="추천하기" class="confetti-button">
       </form>
-      <div id="songList"></div>
-      <div id="videoContainer"></div>
+      <div id="songInfo"></div>
+<!--      <div id="videoContainer"></div>-->
     </div>
   </div>
 </body>
