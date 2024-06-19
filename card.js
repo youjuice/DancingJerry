@@ -75,7 +75,8 @@ async function renderSongList() {
         }
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = '삭제';
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('btn-3d', 'btn-3d-delete');
         deleteButton.addEventListener('click', () => deleteSongRecommendation(song.id));
 
         card.appendChild(title);

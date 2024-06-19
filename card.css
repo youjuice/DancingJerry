@@ -74,6 +74,7 @@ body, html {
     justify-content: center;
     align-items: center;
     height: calc(100vh / 4);
+    overflow-y: hidden;
 }
 
 #cardSection {
@@ -89,7 +90,7 @@ body, html {
     left: 5px; 
     padding: 5px 15px;
     font-size: 1rem;
-    background-color: #333;
+    background-color: #40E0D0;
     color: white;
     border: none;
     border-radius: 5px;
@@ -118,4 +119,52 @@ body, html {
     color: white;
     font-size: 30px;
     font-weight: bold;
+}
+
+.button_container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.btn-3d {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 5px;
+    transition: all 0.2s ease;
+}
+
+.btn-3d:active {
+    box-shadow: 0 2px;
+    transform: translateY(3px);
+}
+
+.btn-3d-back {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #40E0D0;
+    box-shadow: 0 5px #11423d;
+}
+
+.btn-3d-back:active {
+    box-shadow: 0 2px #40E0D0;
+    transform: translateY(3px);
+}
+
+.btn-3d-delete {
+    padding: 5px 10px;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    background: #e74c3c;
+    box-shadow: 0 5px #c0392b;
+}
+
+.btn-3d-delete:active {
+    box-shadow: 0 2px #c0392b;
+    transform: translateY(3px);
 }

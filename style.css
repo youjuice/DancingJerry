@@ -86,3 +86,33 @@ button {
 #section_1 {
   margin-top: 20vh;
 }
+
+.btn-3d {
+  position: relative;
+  display: inline-block;
+  font-weight: normal;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px;
+  transition: all 0.2s ease;
+}
+
+.btn-3d:active {
+  box-shadow: 0 2px;
+  transform: translateY(3px);
+}
+
+.btn-3d-recommend {
+  padding: 7px 10px;
+  font-size: 1rem;
+  color: black;
+  background: #ffffff;
+  box-shadow: 0 5px #236c65;
+}
+
+.btn-3d-recommend:active {
+  box-shadow: 0 2px #236c65;
+  transform: translateY(3px);
+}
