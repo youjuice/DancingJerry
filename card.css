@@ -1,8 +1,20 @@
 body {
     overflow-x: hidden;
+    overflow-y: auto;
     margin: 0;
     font-family: monospace;
     color: white;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    position: fixed;
 }
 
 .card-container {
@@ -38,3 +50,36 @@ body {
 .card p {
     margin-bottom: 5px;
 }
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.section {
+    flex: 1;
+    overflow-y: auto;
+}
+
+#animationSection {
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh / 3);
+}
+
+#cardSection {
+    background-color: #f0f0f0;
+    height: calc(2 * (100vh / 3));
+    padding: 20px;
+    overflow-y: auto;
+}
+
