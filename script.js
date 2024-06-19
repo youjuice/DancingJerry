@@ -79,37 +79,6 @@ function displaySongRecommendations(event) {
     postSongRecommendations(songData).then(() => console.log('Success'));
 }
 
-function showYouTubeVideo() {
-    let youtubeLink = document.getElementById("youtubeLink").value;
-    let videoContainer = document.getElementById("videoContainer");
-
-    let videoId;
-    if (youtubeLink.includes('youtu.be')) {
-        let startIndex = youtubeLink.lastIndexOf('/') + 1;
-        videoId = youtubeLink.substring(startIndex);
-    } else if (youtubeLink.includes('v=')) {
-        let startIndex = youtubeLink.indexOf('v=') + 2;
-        let endIndex = youtubeLink.indexOf('&', startIndex);
-        videoId = endIndex === -1 ? youtubeLink.substring(startIndex) : youtubeLink.substring(startIndex, endIndex);
-    }
-
-    if (videoId) {
-        let iframe = document.createElement("iframe");
-        iframe.width = "560";
-        iframe.height = "315";
-        iframe.src = "https://www.youtube.com/embed/" + videoId;
-        iframe.frameBorder = "0";
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-        iframe.allowFullscreen = true;
-        iframe.style.width = "100%";
-        iframe.style.height = "315px";
-
-        videoContainer.innerHTML = "";
-        videoContainer.appendChild(iframe);
-    }
-    return false;
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     const openModalBtn = document.getElementById('openModalBtn');
     const closeBtn = document.querySelector('.close');
@@ -146,12 +115,14 @@ async function postSongRecommendations(data) {
 }
 
 function resetForm() {
-    // 폼 요소들의 값을 초기화합니다.
     document.getElementById('genre').value = '';
     document.getElementById('artist').value = '';
     document.getElementById('title').value = '';
     document.getElementById('youtubeLink').value = '';
 
-    // 추천하기 버튼 폼을 보여줍니다.
     document.getElementById('recommendationForm').style.display = 'block';
+}
+
+function showRecommendations() {
+    window.location.href = "card.html"
 }
