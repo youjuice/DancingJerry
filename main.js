@@ -3,7 +3,7 @@ import { danceJerry, loadDancingJerryModel } from './counter.js';
 import './style.css';
 
 let scene, camera, renderer, character, light;
-let scrollPercent = 0;
+let clock, delta, totalElapsed = 0;
 
 function setup() {
     scene = new THREE.Scene();
@@ -31,12 +31,11 @@ function setup() {
     loadDancingJerryModel((dancingJerryModel) => {
         character = dancingJerryModel;
         scene.add(dancingJerryModel);
-    })
+    });
 
+    clock = new THREE.Clock();
     animate();
     window.addEventListener('resize', windowResize);
-    window.addEventListener('load', windowResize);
-    window.addEventListener('scroll', handleScroll, { passive: false });
 }
 
 const bgm = new Audio();
@@ -94,26 +93,22 @@ const animations = [
             }
         }
     }
-]
-
-function handleScroll(event) {
-    event.preventDefault();
-    const maxScroll = ((document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight);
-    const currentScroll = (document.documentElement.scrollTop || document.body.scrollTop);
-
-    scrollPercent = (currentScroll / maxScroll) * 100;
-
-    for (let i = 0; i < animations.length; i++) {
-        const { start, end, action } = animations[i];
-        if (scrollPercent >= start && scrollPercent < end) {
-            const progress = (scrollPercent - start) / (end - start);
-            action.call(animations[i], progress);
-        }
-    }
-}
+];
 
 function animate() {
     requestAnimationFrame(animate);
+
+    delta = clock.getDelta();
+    totalElapsed += delta;
+
+    for (let i = 0; i < animations.length; i++) {
+        const { start, end, action } = animations[i];
+        const duration = end - start;
+        if (totalElapsed >= start && totalElapsed < end) {
+            const progress = (totalElapsed - start) / duration;
+            action.call(animations[i], progress);
+        }
+    }
 
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
