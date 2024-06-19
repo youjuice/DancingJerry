@@ -12,6 +12,21 @@ async function getSongRecommendations() {
     }
 }
 
+async function deleteSongRecommendation(id) {
+    try {
+        const response = await fetch(`http://192.168.0.113:8080/recommendations/${id}`, {
+            method: 'DELETE',
+        });
+        if (!response.ok) {
+            console.error('Network response was not ok');
+            return;
+        }
+        renderSongList();
+    } catch (error) {
+        console.error('There was a problem with deleting the song recommendation:', error);
+    }
+}
+
 function showYouTubeVideo(youtubeLink) {
     let videoId;
     if (youtubeLink.includes('youtu.be')) {
@@ -42,7 +57,7 @@ function showYouTubeVideo(youtubeLink) {
 async function renderSongList() {
     const songList = await getSongRecommendations();
     const songListContainer = document.getElementById('songList');
-    songListContainer.innerHTML = ''; // 기존 목록 초기화
+    songListContainer.innerHTML = ''; 
 
     songList.forEach(song => {
         const card = document.createElement('div');
@@ -59,8 +74,13 @@ async function renderSongList() {
             youtubeContainer.appendChild(iframe);
         }
 
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = '삭제';
+        deleteButton.addEventListener('click', () => deleteSongRecommendation(song.id));
+
         card.appendChild(title);
         card.appendChild(youtubeContainer);
+        card.appendChild(deleteButton);
 
         songListContainer.appendChild(card);
     });

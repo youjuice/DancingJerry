@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song List</title>
     <script src="./card.js"></script>
-    <script src="./card_Three.js"></script>
+    <script type="module" src="./card_Three.js"></script>
     <link rel="stylesheet" href="./card.css">
 </head>
 <body>
     <div class="container">
         <section id="animationSection" class="section">
-
+            <button id="backButton">뒤로가기</button>
         </section>
         <section id="cardSection" class="section">
             <div id="songList" class="card-container"></div>
         </section>
     </div>
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>

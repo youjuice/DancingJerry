@@ -2,10 +2,10 @@ import * as THREE from 'three';
 import './card.css';
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight / 3), 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 
-renderer.setSize(window.innerWidth / 3, window.innerHeight);
+renderer.setSize(window.innerWidth, window.innerHeight / 3);
 document.getElementById('animationSection').appendChild(renderer.domElement);
 
 const geometry = new THREE.BoxGeometry();
@@ -26,3 +26,10 @@ function animate() {
 
 animate();
 
+window.addEventListener('resize', () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight / 3;
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+});
